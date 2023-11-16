@@ -1,23 +1,8 @@
-from draw_hangman import draw_hangman as draw_hangman
-from word_selection import word_selection as hidden_word
-import string
+from draw_hangman import draw_hangman as draw_hangman #Draws the hangman
+from word_selection import word_selection as hidden_word #Selects a random word from words.txt
+from users_input import get_user_input as user_input #Gets user input
 
 max_incorrect_guesses = 6
-
-# Get user input
-def get_user_input(letters_guessed):
-    while True:
-        user_input = input("Guess a letter: ").lower()
-        if validate_input(user_input, letters_guessed):
-            return user_input
-
-# Validate user input
-def validate_input(user_input, letters_guessed):
-    return (
-        len(user_input) == 1
-        and user_input in string.ascii_lowercase
-        and user_input not in letters_guessed
-    )
 
 # Display the word with underscores for letters not yet guessed
 def display_word(word, letters_guessed):
@@ -53,7 +38,7 @@ def hangman(hidden_word):
     while remaining_guesses > 0:
         display_progress(hidden_word, letters_guessed, remaining_guesses) #display progress
         draw_hangman(6 - remaining_guesses) #display hangman
-        guess = get_user_input(letters_guessed) #get user input
+        guess = user_input(letters_guessed) #get user input
         letters_guessed.append(guess)
         if guess in hidden_word:
             print("Correct!")
