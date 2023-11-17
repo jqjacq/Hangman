@@ -27,7 +27,7 @@ def display_progress(hidden_word, letters_guessed, remaining_guesses):
 
     print(f"Word to guess: {word_progress}")
     print(f"Letters guessed: {join_letters_guessed(letters_guessed)}")
-    print(f"Remaining guesses: {remaining_guesses}")
+    print(f"Remaining lives: {remaining_guesses}")
 
 
 # Start and loop through the game
