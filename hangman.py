@@ -10,12 +10,9 @@ def display_word(word, letters_guessed):
     for letter in word:
         if letter in letters_guessed:
             correct_letters += letter
-            # correct_letters.append(letter)
         else:
             correct_letters += "_ "
-            # correct_letters.append("_")
     return correct_letters
-            #" ".join(correct_letters)
 
 # Display the letters that have been guessed
 def join_letters_guessed(letters_guessed):
@@ -23,12 +20,11 @@ def join_letters_guessed(letters_guessed):
 
 # Display the progress
 def display_progress(hidden_word, letters_guessed, remaining_guesses):
-    word_progress = ''.join(letter if letter in letters_guessed else "_" for letter in hidden_word)
+    word_progress = ''.join(letter if letter in letters_guessed else "_ " for letter in hidden_word)
 
     print(f"Word to guess: {word_progress}")
     print(f"Letters guessed: {join_letters_guessed(letters_guessed)}")
     print(f"Remaining lives: {remaining_guesses}")
-
 
 # Start and loop through the game
 def hangman(hidden_word):
@@ -50,11 +46,9 @@ def hangman(hidden_word):
             draw_hangman(max_incorrect_guesses - remaining_guesses)
             print("You ran out of tries! The word was " + hidden_word + ".")
         
-        # Check if all letters have been guessed
         if "_" not in display_word(hidden_word, letters_guessed):
             print("Congratulations! You guessed the word!")
             break
-
     play_again()
 
 # Ask if the user wants to play again
